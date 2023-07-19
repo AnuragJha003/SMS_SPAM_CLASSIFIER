@@ -1,14 +1,19 @@
 import streamlit as st
 import pickle
 import string
+import pandas as pd 
 from nltk.corpus import stopwords
 import nltk
 from nltk.stem.porter import PorterStemmer
 
 ps = PorterStemmer()
 
-tf = pickle.load(open('vectorizer.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'rb'))
+with open('vectorizer.pkl', 'rb') as f:
+      tf = pd.read_pickle(f)
+with open('model.pkl', 'rb') as f:
+      model = pd.read_pickle(f)
+#tf = pickle.load(open('vectorizer.pkl', 'rb'))
+#model = pickle.load(open('model.pkl', 'rb'))
 
 st.title('Email/sms spam classifier')
 
